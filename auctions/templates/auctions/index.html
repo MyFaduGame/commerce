@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'auctions/styles1.css' %}" rel="stylesheet"> 
+{% endblock %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+        <div class="container">
+                {% for listing in listings %}
+                <div class="row">
+                    <div class="image">
+                        <img src="{{listing.image}}" alt="{{listing.title}}" width="350">
+                    </div>
+                
+                    <div class="content">
+                        <ul style="list-style-type: none;">
+                            <li id="title"><a href="{% url 'detail_view' listing.id %}"><strong>{{listing.title}}</strong></a>
+                            <li id="description">Description: {{listing.description}}</li>
+                            <li id="price"><strong>Price:</strong> <span style="color: green; font-size: 18px; ">
+                                <strong>
+                                    {% for bid in bids %} 
+                                        {% if bid.listings == listing.id %}
+                                            Rs.{{bid.price}}
+                                        {% endif %}
+                                    {%endfor%}
+                                        
+                                </strong></span></li>
+                            <li id="category">Category: {{listing.category}}</li>
+                            <br>
+                            <li id="date"><i>Created {{listing.last_modified}}</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+        </div>
+   
+{% endblock %}

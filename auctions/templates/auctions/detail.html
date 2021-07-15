@@ -1,0 +1,60 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'auctions/styles2.css' %}" type=text/css rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    {%if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{message.tags}}{% endif %}" role="alert">{{message}}</div>
+        {% endfor %}
+    {% endif %}
+    <h2>Listing: {{listing.title}}</h2>
+    <div class="container">
+        
+        <div class="row">   
+            <div class="descp_detail">
+                <p>Description: {{listing.description}}</p>
+                <p><strong>Current Price:</strong> <span style="color: green; font-size: 26px; ">
+                    <strong>${{bid.current_bid}}</strong></span></p>
+                <p>Starting Price: Rs.{{listing.start_bid}}</p>
+                <h2>Details:</h2>
+                <ul>
+                    <li>Listed by: {{listing.user}}</li>
+                    <li>Category: {{listing.category}}</li>
+                </ul>
+                <br><br>
+                <form action="{% url 'bid' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <p>Bid here:</p>
+                    <strong>{{form}}</strong>
+                    <input type="submit" value="Bid">
+                </form>
+
+                <a href="{% url 'close_bid' listing.id %}">
+                    <button type="button" id="button">Close Bid</button>
+                </a>
+                
+            </div> 
+            
+            <div class="image_detail">
+                <a href="{% url 'watchlist' listing.id%}" role="button" class="btn btn-outline-info btn-sm" aria-pressed="true">watchlist</a>
+                <!--<a href="{% url 'watchlist' listing.id%}">
+                    <button class="buttonClass" type="button" id="button">Watchlist</button>
+                </a>
+                <a href="{% url 'watchlist' listing.id%}" role="button" class="btn btn-outline-info btn-sm">watchlist</a>
+                -->
+                <div style="text-align:center; border: 1px solid red;">
+                    <img src="{{listing.image}}" alt="{{listing.title}}" width="600">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+   
+{% endblock %}

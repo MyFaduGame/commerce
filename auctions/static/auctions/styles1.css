@@ -1,0 +1,41 @@
+/** {
+    box-sizing: border-box;
+}*/
+
+.container{
+    padding: 30px;
+    border: 1px solid red;
+}
+
+.image{
+    float: left;
+    width: 40%;
+    margin-top: 10px;
+    border: 2px solid lightgrey;
+    text-align: center;
+}
+
+.content{
+    float: left;
+    width:60%;
+    margin-top: 10px;
+    padding-top: 10px;
+    border: 2px solid lightgrey;
+    font-family: sans-serif;
+}
+
+#title{
+    font-size: 25px;
+}
+
+#price{
+    font-size: 20px;
+}
+
+#date{
+    font-size: 15px;
+    color: grey;
+}
+
+
+

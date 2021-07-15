@@ -1,0 +1,44 @@
+.buttonClass{
+    background-color:blue;
+    color:red;
+    font-size: 20px;
+}
+
+.btn:focus {
+    background-color: #68889E;
+}
+
+.container{
+    padding-left:0px;
+    padding-top:10px;
+    border: 1px solid green;
+}
+
+
+.descp_detail{
+    float: left;
+    width: 40%;
+    border: 1px solid orange;
+}
+
+
+.image_detail{
+    float: left;
+    width: 60%;
+    border: 1px solid blue;
+}
+
+
+/*.row:after{
+    content:"";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 2000px){
+    .descp_detail, .image_detail{
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
